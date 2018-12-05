@@ -44,12 +44,13 @@ export class UpdatePasien extends React.Component {
           let last = name.pop();
           name.reduce((prev, next) => {
             return (prev[next] = prev[next] || {});
-          }, dataJson)[last] = val;
+          }, dataJson)[key] = val;
         } else {
           dataJson[key] = val;
         }
       }
     });
+    console.log(dataJson);
     Appointment.updateStatusPasien(dataJson).then(response => {
       if (response.status === 200) {
         this.setState({
